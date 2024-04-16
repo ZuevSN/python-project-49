@@ -22,7 +22,7 @@ def main(name='anonymous', end=3):
         equal, result_num = equality(random_number, answer)
         if equal:
             print("Correct!")
-            if step == 2:
+            if step == end - 1:
                 print(f"Congratulations, {name}!")
         else:
             print(f'''\'{answer}\' is wrong answer ;(. \

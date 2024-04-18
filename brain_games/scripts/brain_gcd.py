@@ -12,6 +12,7 @@ def nod():
     result = math.gcd(x, y)
     return result
 
+
 def main():
     name = cli.welcome_user()
     print('Answer "yes" if the number is even, otherwise answer "no".')

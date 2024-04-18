@@ -7,37 +7,45 @@ def even():
     random_number = random.randint(1, 100)
     print(f'Question: {random_number}')
     if random_number % 2 == 0:
-        return 'yes'
+        result = 'yes'
     else:
-        return 'no'
+        result = 'no'
+    return result
 
 
-def respondent(name: str, answer: str, result, attempt: int, limit=3):
+# функция принимает ответ, верный результат, число успехов и
+# ограничитель правильных ответов.
+# При обработке: выдает сообщения при успехах и неуспехах;
+# возвращает номер попытки и закончена игра или нет.
+def respondent(name: str, answer: str, result, score: int, limit=3):
     if answer.lower() == str(result).lower():
         print("Correct!")
-        attempt += 1
-        if attempt == limit:
+        score += 1
+        if score == limit:
             print(f"Congratulations, {name}!")
-            return attempt, True
+            end = True
+            return score, end
         else:
-            return attempt, False
+            end = False
+            return score, end
     else:
         print(f'''\'{answer}\' is wrong answer ;(. \
 Correct answer was \'{result}\'
 Let\'s try again, {name}''')
-        attempt = 0
-        return attempt, True
+        score = 0
+        end = True
+        return score, end
 
 
 def main():
     name = cli.welcome_user()
     print('Answer "yes" if the number is even, otherwise answer "no".')
-    attempt = 0
+    score = 0
     end = False
     while not end:
         result = even()
         answer = prompt.string('Your answer: ')
-        attempt, end = respondent(name, answer, result, attempt)
+        score, end = respondent(name, answer, result, score)
 
 
 if __name__ == "__main__":

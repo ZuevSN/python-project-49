@@ -5,19 +5,12 @@ from brain_games.scripts import cli
 from brain_games.scripts import brain_even
 
 
-def welcome_user():
-    global name
-    name = prompt.string('May I have your name? ')
-    print(f'Hello, {name}')
-    return name
-
-
 def sum_arithm_progr(a1: int, step: int, amount: int):
     return int((amount * (2 * a1 + step * (amount - 1))) / 2)
 
 
 def calc():
-    # В списке кортежы из функции, отображения операции,
+    # В списке кортежы из функции, отображения вопроса,
     # списка ограничений для аргументов функции.
     # Список ограничений также определяет количество аргументов функции
     tuple_questions = [
@@ -47,12 +40,12 @@ def calc():
 def main():
     name = cli.welcome_user()
     print('What is the result of the expression?')
-    attempt = 0
+    score = 0
     end = False
     while not end:
         result = calc()
         answer = prompt.string('Your answer: ')
-        attempt, end = brain_even.respondent(name, answer, result, attempt)
+        score, end = brain_even.respondent(name, answer, result, score)
 
 
 if __name__ == "__main__":

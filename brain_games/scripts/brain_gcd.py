@@ -15,7 +15,7 @@ def nod():
 
 def main():
     name = cli.welcome_user()
-    print('Answer "yes" if the number is even, otherwise answer "no".')
+    print('Find the greatest common divisor of given numbers.')
     score = 0
     end = False
     while not end:

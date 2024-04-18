@@ -1,6 +1,8 @@
 import prompt
 import random
 import math
+from brain_games.scripts import cli
+from brain_games.scripts import brain_even
 
 
 def welcome_user():
@@ -10,40 +12,47 @@ def welcome_user():
     return name
 
 
-def dialog(answer, result, attempt=3):
-    print("victory or fail")
+def sum_arithm_progr(a1: int, step: int, amount: int):
+    return int((amount * (2 * a1 + step * (amount - 1))) / 2)
 
 
-def sum_arithm_progr(arg1, step, amount):
-    return int((amount*(2*arg1 + step*(amount - 1)))/2)
-
-
-def calc():  
-#   В списке кортежы из функции, отображения функции , 
-#   списка ограничений для аргументов функции(он же определяет количество аргументов функции)
-    tuple_operations = [
-        (lambda arg1,arg2:    arg1 + arg2,        lambda arg1,arg2:   f"{arg1} + {arg2}", [100,100]), 
-        (lambda arg1,arg2:    arg1 - arg2,        lambda arg1,arg2:   f"{arg1} - {arg2}", [100,100]),
-        (lambda arg1,arg2:    arg1 * arg2,        lambda arg1,arg2:   f"{arg1} * {arg2}", [10,10]),
-        (lambda arg1,arg2:    arg1 // arg2,       lambda arg1,arg2:   f"{arg1} // {arg2}",[100,100]),
-        (lambda arg1,arg2:    arg1 % arg2,        lambda arg1,arg2:   f"{arg1} % {arg2}", [100,100]),
-        (lambda arg1:    arg1 ** 2,               lambda arg1:        f"{arg1}^2",        [10]),
-        (lambda arg1:    math.factorial(arg1),    lambda arg1:        f"{arg1}!",         [5]),
-        (sum_arithm_progr,                        lambda arg1, step, amount:f"первый член прогрессии - {arg1},разность прогрессии - {step}.Посчитай сумму первых {amount} элементов арифмитической прогрессии",[5,5,3])     
+def calc():
+    # В списке кортежы из функции, отображения операции,
+    # списка ограничений для аргументов функции.
+    # Список ограничений также определяет количество аргументов функции
+    tuple_questions = [
+        (lambda x, y: x + y, lambda x, y: f"{x} + {y}", [(10, 100), (10, 100)]),
+        (lambda x, y: x - y, lambda x, y: f"{x} - {y}", [(10, 100), (10, 100)]),
+        (lambda x, y: x * y, lambda x, y: f"{x} * {y}", [(1, 10), (1, 10)]),
+        (lambda x, y: x // y, lambda x, y: f"{x} // {y}", [(1, 100), (1, 100)]),
+        (lambda x, y: x % y, lambda x, y: f"{x} % {y}", [(1, 100), (1, 100)]),
+        (lambda x: x ** 2, lambda x: f"{x}^2", [(2, 10)]),
+        (lambda x: math.factorial(x), lambda x: f"{x}!", [(2, 5)]),
+        (sum_arithm_progr, lambda a1, step, amount: f"Арифметическая \
+прогрессия. Первый член прогрессии - {a1}, \
+разность прогрессии - {step}. Посчитай сумму первых {amount} \
+элементов арифмитической прогрессии", [(1, 5), (1, 3), (2, 3)]),
     ]
-    operation = random.choice(tuple_operations)
+    question = random.choice(tuple_questions)
     args = []
-    for item in operation[2]:
-        args.append(random.randint(1, item))
-    print(f"Реши пример: {operation[1](*args)}")
-    print(f"Правильный ответ: {operation[0](*args)}")
-
+    # генерация аргументов для случайно выбранной функции
+    for limits in question[2]:
+        args.append(random.randint(limits[0], limits[1]))
+    # отправка текстовки примера и результата
+    print(f"Question: {question[1](*args)}")
+    result = question[0](*args)
+    return result
 
 
 def main():
-    print("Пример и результат")
-#    welcome_user()
-    calc()
+    name = cli.welcome_user()
+    print('What is the result of the expression?')
+    attempt = 0
+    end = False
+    while not end:
+        result = calc()
+        answer = prompt.string('Your answer: ')
+        attempt, end = brain_even.respondent(name, answer, result, attempt)
 
 
 if __name__ == "__main__":

@@ -17,7 +17,8 @@ def even():
 # ограничитель правильных ответов.
 # При обработке: выдает сообщения при успехах и неуспехах;
 # возвращает счет и закончена игра или нет.
-def respondent(name: str, answer: str, result, score: int, limit=3):
+def respondent(name: str, result, score: int, limit=3):
+    answer = prompt.string('Your answer: ')
     if answer.lower() == str(result).lower():
         print("Correct!")
         score += 1
@@ -38,14 +39,14 @@ Let\'s try again, {name}''')
 
 
 def main():
+    print("Welcome to the Brain Games!")
     name = cli.welcome_user()
     print('Answer "yes" if the number is even, otherwise answer "no".')
     score = 0
     end = False
     while not end:
         result = even()
-        answer = prompt.string('Your answer: ')
-        score, end = respondent(name, answer, result, score)
+        score, end = respondent(name, result, score)
 
 
 if __name__ == "__main__":

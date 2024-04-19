@@ -1,4 +1,3 @@
-import prompt
 import random
 from brain_games.scripts import cli
 from brain_games.scripts import brain_even
@@ -17,19 +16,19 @@ def progression():
             progression_string = progression_string + ' ' + '..'
         else:
             progression_string = progression_string + ' ' + str(a1 + i * step)
-    print(f'Question:{progression_string}')
+    print(f'Question: {progression_string[1:]}')
     return result
 
 
 def main():
+    print("Welcome to the Brain Games!")
     name = cli.welcome_user()
     print('What number is missing in the progression?')
     score = 0
     end = False
     while not end:
         result = progression()
-        answer = prompt.string('Your answer: ')
-        score, end = brain_even.respondent(name, answer, result, score)
+        score, end = brain_even.respondent(name, result, score)
 
 
 if __name__ == "__main__":

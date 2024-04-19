@@ -1,4 +1,3 @@
-import prompt
 import random
 import math
 from brain_games.scripts import cli
@@ -38,14 +37,14 @@ def calc():
 
 
 def main():
+    print("Welcome to the Brain Games!")
     name = cli.welcome_user()
     print('What is the result of the expression?')
     score = 0
     end = False
     while not end:
         result = calc()
-        answer = prompt.string('Your answer: ')
-        score, end = brain_even.respondent(name, answer, result, score)
+        score, end = brain_even.respondent(name, result, score)
 
 
 if __name__ == "__main__":

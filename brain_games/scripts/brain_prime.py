@@ -11,8 +11,6 @@ def isprime():
             result = 'no'
             break
     print(f'Question: {random_numer}')
-    if random_numer == 1:
-        result = 'no'
     return result
 
 

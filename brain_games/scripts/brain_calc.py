@@ -1,6 +1,5 @@
 import random
 import math
-from brain_games.scripts import cli
 from brain_games.scripts import brain_even
 
 
@@ -38,7 +37,7 @@ def calc():
 
 def main():
     print("Welcome to the Brain Games!")
-    name = cli.welcome_user()
+    name = brain_even.welcome_user()
     print('What is the result of the expression?')
     score = 0
     end = False

@@ -1,6 +1,5 @@
 import random
 import math
-from brain_games.scripts import cli
 from brain_games.scripts import brain_even
 
 
@@ -14,7 +13,7 @@ def nod():
 
 def main():
     print("Welcome to the Brain Games!")
-    name = cli.welcome_user()
+    name = brain_even.welcome_user()
     print('Find the greatest common divisor of given numbers.')
     score = 0
     end = False

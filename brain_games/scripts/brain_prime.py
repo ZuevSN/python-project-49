@@ -1,6 +1,5 @@
 import random
 import math
-from brain_games.scripts import cli
 from brain_games.scripts import brain_even
 
 
@@ -17,7 +16,7 @@ def isprime():
 
 def main():
     print("Welcome to the Brain Games!")
-    name = cli.welcome_user()
+    name = brain_even.welcome_user()
     print('Answer "yes" if given number is prime. Otherwise answer "no".')
     score = 0
     end = False

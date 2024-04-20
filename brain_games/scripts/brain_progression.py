@@ -1,5 +1,4 @@
 import random
-from brain_games.scripts import cli
 from brain_games.scripts import brain_even
 
 
@@ -22,7 +21,7 @@ def progression():
 
 def main():
     print("Welcome to the Brain Games!")
-    name = cli.welcome_user()
+    name = brain_even.welcome_user()
     print('What number is missing in the progression?')
     score = 0
     end = False

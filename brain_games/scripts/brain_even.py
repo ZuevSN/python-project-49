@@ -1,6 +1,11 @@
 import prompt
 import random
-from brain_games.scripts import cli
+
+
+def welcome_user():
+    name = prompt.string('May I have your name? ')
+    print(f'Hello, {name}')
+    return name
 
 
 def even():
@@ -40,7 +45,7 @@ Let\'s try again, {name}''')
 
 def main():
     print("Welcome to the Brain Games!")
-    name = cli.welcome_user()
+    name = welcome_user()
     print('Answer "yes" if the number is even, otherwise answer "no".')
     score = 0
     end = False

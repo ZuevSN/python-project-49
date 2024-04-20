@@ -3,8 +3,17 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/db219f5d644e805eb53c/maintainability)](https://codeclimate.com/github/ZuevSN/python-project-49/maintainability)
 
+Проект "Игры разума" - набор приложений с задачами на счет
+
+Минимальные требования:
+Python version 3.8.10
+Poetry version 1.8.2
+
 Установка зависимостей проекта:
 make install
+
+Создание дистрибутива:
+make build
 
 Установка дистрибутива:
 make package-install

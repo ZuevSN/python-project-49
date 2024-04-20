@@ -37,7 +37,7 @@ def respondent(name: str, result, score: int, limit=3):
     else:
         print(f'''\'{answer}\' is wrong answer ;(. \
 Correct answer was \'{result}\'
-Let\'s try again, {name}''')
+Let\'s try again, {name}!''')
         score = 0
         end = True
         return score, end

@@ -6,7 +6,7 @@ from brain_games.scripts import brain_even
 def sum_arithm_progr(a1: int, step: int, amount: int):
     return int((amount * (2 * a1 + step * (amount - 1))) / 2)
 
-
+# автотесты не рассчитаны на calc
 def calc():
     # В списке кортежы из функции, отображения вопроса,
     # списка ограничений для аргументов функции.
@@ -35,6 +35,22 @@ def calc():
     return result
 
 
+def simple_calc():
+    tuple_questions = [
+        (lambda x, y: x + y, lambda x, y: f"{x} + {y}", [(1, 5), (1, 5)]),
+        (lambda x, y: x - y, lambda x, y: f"{x} - {y}", [(1, 5), (1, 5)]),
+        (lambda x, y: x * y, lambda x, y: f"{x} * {y}", [(1, 2), (1, 2)]),
+    ]
+    question = random.choice(tuple_questions)
+    args = []
+    # генерация аргументов для случайно выбранной функции
+    for limits in question[2]:
+        args.append(random.randint(limits[0], limits[1]))
+    # отправка текстовки примера и результата
+    print(f"Question: {question[1](*args)}")
+    result = question[0](*args)
+    return result
+
 def main():
     print("Welcome to the Brain Games!")
     name = brain_even.welcome_user()
@@ -42,7 +58,7 @@ def main():
     score = 0
     end = False
     while not end:
-        result = calc()
+        result = simple_calc()
         score, end = brain_even.respondent(name, result, score)
 
 

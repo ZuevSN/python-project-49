@@ -116,6 +116,8 @@ def progression(a1, step, amount):
 def isprime(x):
     string = str(x)
     result = 'yes'
+    if x == 1:
+        result = 'no'
     for value in range(2, int(math.sqrt(x)) + 1):
         if x % value == 0:
             result = 'no'

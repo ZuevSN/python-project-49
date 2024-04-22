@@ -9,14 +9,22 @@ def welcome_user():
     global name
     name = prompt.string('May I have your name? ')
     print(f'Hello, {name}')
-    return name
+
+
+# codeclimate ругался на рефакторинг.
+# пришлось вынести из игровых модулей
+def spinner(questions, limit=3):
+    score = 0
+    end = False
+    while not end:
+        score, end = respondent(questions, score, limit)
 
 
 # Функция принимает список вопросов, число успехов и
 # ограничитель правильных ответов.
 # При обработке: выдает сообщения при успехах и неуспехах;
 # Возвращает счет и закончена игра или нет.
-def respondent(questions, score: int, limit=3):
+def respondent(questions, score: int, limit: int):
     result, string = calculate(questions)
     print(f'Question: {string}')
     answer = prompt.string('Your answer: ')
@@ -69,19 +77,19 @@ def calculate(questions):
                         [(1, 100), (1, 100), (5, 10)]),
         'prime': (isprime, None, [(1, 100)]),
     }
-    # выбор произвольной операции из пришедших
+    # Выбор произвольной операции из пришедших
     random_operation = random.choice(questions)
     question = dictionary_questions[random_operation]
-    # генерация аргументов
+    # Генерация аргументов
     args = []
     for limits in question[2]:
         args.append(random.randint(limits[0], limits[1]))
+    # Получение результата и текста для вопроса
     if question[1] is None:
         result, string = question[0](*args)
     else:
         string = question[1](*args)
         result = question[0](*args)
-    # отправка результата и текста для вопроса
     return result, string
 
 

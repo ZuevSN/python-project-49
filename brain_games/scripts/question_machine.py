@@ -20,13 +20,8 @@ def respondent(game_text: str, questions: list, limit=3):
         else:
             i = -1
             break
-    # 4. Результат
-    if i == limit - 1:
-        print(f"Congratulations, {name}!")
-    else:
-        print(f'''\'{answer}\' is wrong answer ;(. \
-Correct answer was \'{result}\'
-Let\'s try again, {name}!''')
+    # 4. Результат игры
+    result_game(i, answer, result)
 
 
 # Приветствие
@@ -55,6 +50,14 @@ def calculate(questions):
         result = question[0](*args)
     return result, string
 
+
+def result_game(x, answer, result):
+    if x == -1:
+        print(f'''\'{answer}\' is wrong answer ;(. \
+Correct answer was \'{result}\'
+Let\'s try again, {name}!''')
+    else:
+        print(f"Congratulations, {name}!")
 
 # Функции для словаря функций dict_questions
 # Сумма арифмитической прогрессии

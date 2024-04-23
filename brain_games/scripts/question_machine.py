@@ -59,6 +59,7 @@ Let\'s try again, {name}!''')
     else:
         print(f"Congratulations, {name}!")
 
+
 # Функции для словаря функций dict_questions
 # Сумма арифмитической прогрессии
 def sum_arithm_progr(a1: int, step: int, amount: int):

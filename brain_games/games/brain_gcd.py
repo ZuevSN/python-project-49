@@ -2,10 +2,9 @@ from brain_games.scripts import question_machine
 
 
 def main():
-    question_machine.welcome_user()
-    print('Find the greatest common divisor of given numbers.')
+    game_text = 'Find the greatest common divisor of given numbers.'
     questions = ('gcd',)
-    question_machine.spinner(questions)
+    question_machine.respondent(game_text, questions)
 
 
 if __name__ == "__main__":

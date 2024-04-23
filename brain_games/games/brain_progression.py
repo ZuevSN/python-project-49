@@ -6,5 +6,6 @@ def main():
     questions = ('progression',)
     question_machine.respondent(game_text, questions)
 
+
 if __name__ == "__main__":
     main()

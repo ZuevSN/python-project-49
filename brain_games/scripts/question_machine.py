@@ -4,8 +4,7 @@ import math
 
 
 # Функция принимает текст игры, список вопросов,
-# ограничитель правильных ответов.
-# Возвращает текстовки по игре (приветствие, вопросы, ответы, итог)
+# ограничитель правильных ответов. Возвращает текстовки по игре.
 def respondent(game_text: str, questions: list, limit=3):
     # 1. Приветствие
     welcome_user()
@@ -22,7 +21,7 @@ def respondent(game_text: str, questions: list, limit=3):
             i = -1
             break
     # 4. Результат
-    if i == limit:
+    if i == limit - 1:
         print(f"Congratulations, {name}!")
     else:
         print(f'''\'{answer}\' is wrong answer ;(. \
@@ -36,6 +35,7 @@ def welcome_user():
     global name
     name = prompt.string('May I have your name? ')
     print(f'Hello, {name}')
+
 
 # Функция выбирает произвольную функцию из словаря функций
 # Исходя из аргументов рассчитывает результат функции и
@@ -66,6 +66,7 @@ def sum_arithm_progr(a1: int, step: int, amount: int):
 элементов арифмитической прогрессии"
     return result, string
 
+
 # Чет/нечет
 def even(x):
     string = str(x)
@@ -74,6 +75,7 @@ def even(x):
     else:
         result = 'no'
     return result, string
+
 
 # Недостающий элемент прогрессии
 def progression(a1, step, amount):
@@ -88,6 +90,7 @@ def progression(a1, step, amount):
             progression_string = progression_string + ' ' + str(a1 + i * step)
     string = progression_string[1:]
     return result, string
+
 
 # Простое число
 def isprime(x):
@@ -106,25 +109,20 @@ def isprime(x):
 # списка ограничений для аргументов функции.
 # Список ограничений также определяет количество аргументов функции
 dict_questions = {
-        '+': (lambda x, y: x + y, lambda x, y: f"{x} + {y}",
-              [(10, 100), (10, 100)]),
-        'even': (even, None, [(2, 3)]),
-        'qrt': (lambda x: x ** 2, lambda x: f"{x}^2", [(2, 10)]),
-        '-': (lambda x, y: x - y, lambda x, y: f"{x} - {y}",
-              [(10, 100), (10, 100)]),
-        '*': (lambda x, y: x * y, lambda x, y: f"{x} * {y}",
-              [(1, 10), (1, 10)]),
-        '//': (lambda x, y: x // y, lambda x, y: f"{x} // {y}",
-               [(1, 100), (1, 100)]),
-        '%': (lambda x, y: x % y, lambda x, y: f"{x} % {y}",
-              [(1, 100), (1, 100)]),
-        '!': (lambda x: math.factorial(x), lambda x: f"{x}!",
-              [(2, 5)]),
-        'sum_arithm_progr': (sum_arithm_progr, None,
-                             [(1, 5), (1, 3), (2, 3)]),
-        'gcd': (lambda x, y: math.gcd(x, y), lambda x, y: f"{x} {y}",
-                [(1, 100), (1, 100)]),
-        'progression': (progression, None,
-                        [(1, 100), (1, 100), (5, 10)]),
-        'prime': (isprime, None, [(1, 100)]),
-    }
+    '+': (lambda x, y: x + y, lambda x, y: f"{x} + {y}",
+          [(10, 100), (10, 100)]),
+    'even': (even, None, [(2, 3)]),
+    'qrt': (lambda x: x ** 2, lambda x: f"{x}^2", [(2, 10)]),
+    '-': (lambda x, y: x - y, lambda x, y: f"{x} - {y}",
+          [(10, 100), (10, 100)]),
+    '*': (lambda x, y: x * y, lambda x, y: f"{x} * {y}", [(1, 10), (1, 10)]),
+    '//': (lambda x, y: x // y, lambda x, y: f"{x} // {y}",
+           [(1, 100), (1, 100)]),
+    '%': (lambda x, y: x % y, lambda x, y: f"{x} % {y}", [(1, 100), (1, 100)]),
+    '!': (lambda x: math.factorial(x), lambda x: f"{x}!", [(2, 5)]),
+    'sum_arithm_progr': (sum_arithm_progr, None, [(1, 5), (1, 3), (2, 3)]),
+    'gcd': (lambda x, y: math.gcd(x, y), lambda x, y: f"{x} {y}",
+            [(1, 100), (1, 100)]),
+    'progression': (progression, None, [(1, 100), (1, 100), (5, 10)]),
+    'prime': (isprime, None, [(1, 100)])
+}

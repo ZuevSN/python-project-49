@@ -19,4 +19,3 @@ def isprime(number):
 def game_arguments():
     number = random.randint(1, 50)
     return isprime(number)
-

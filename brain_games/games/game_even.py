@@ -15,4 +15,3 @@ def even(number):
 def game_arguments():
     number = random.randint(1, 100)
     return even(number)
-

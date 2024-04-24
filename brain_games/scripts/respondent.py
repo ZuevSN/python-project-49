@@ -1,5 +1,6 @@
 import prompt
 
+
 def responde(game, limit=3):
     # 1. Приветствие
     welcome_user()
@@ -27,7 +28,7 @@ def welcome_user():
 
 
 def result_game(x, answer, result):
-    if x == None:
+    if x is None:
         print(f'''\'{answer}\' is wrong answer ;(. \
 Correct answer was \'{result}\'
 Let\'s try again, {name}!''')

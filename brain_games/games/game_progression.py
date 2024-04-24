@@ -2,6 +2,7 @@ import random
 
 MAIN_QUESTION = 'What number is missing in the progression?'
 
+
 def progression(element, step, amount):
     progression_string = ''
     random_position = random.randint(0, amount - 1)
@@ -15,6 +16,7 @@ def progression(element, step, amount):
         element += step
     string = progression_string[1:]
     return result, string
+
 
 def game_arguments():
     element = random.randint(1, 10)

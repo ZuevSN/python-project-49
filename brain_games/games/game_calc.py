@@ -1,6 +1,6 @@
 import random
 
-MAIN_QUESTION = 'What number is missing in the progression?'
+MAIN_QUESTION = 'What is the result of the expression?'
 
 
 def game_arguments():

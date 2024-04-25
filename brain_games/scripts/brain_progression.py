@@ -1,9 +1,9 @@
-from brain_games.scripts import respondent
+from brain_games.scripts.respondent import engine
 from brain_games.games import game_progression
 
 
 def main():
-    respondent.responde(game_progression)
+    engine(game_progression)
 
 
 if __name__ == "__main__":

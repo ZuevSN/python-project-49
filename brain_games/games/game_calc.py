@@ -3,15 +3,19 @@ import random
 MAIN_QUESTION = 'What is the result of the expression?'
 
 
-def game_arguments():
+def calc(x, y):
     list_operations = [
-        (lambda x, y: x + y, lambda x, y: f"{x} + {y}"),
-        (lambda x, y: x - y, lambda x, y: f"{x} - {y}"),
-        (lambda x, y: x * y, lambda x, y: f"{x} * {y}")
+        (x + y, f"{x} + {y}"),
+        (x - y, f"{x} - {y}"),
+        (x * y, f"{x} * {y}")
     ]
     operation = random.choice(list_operations)
+    result = operation[0]
+    string = operation[1]
+    return result, string
+
+
+def get_right_answer_and_question():
     x = random.randint(1, 10)
     y = random.randint(1, 10)
-    result = operation[0](x, y)
-    string = operation[1](x, y)
-    return result, string
+    return calc(x, y)

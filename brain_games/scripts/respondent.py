@@ -1,36 +1,26 @@
 import prompt
 
 
-def responde(game, limit=3):
-    # 1. Приветствие
-    welcome_user()
-    # 2. Вопрос игры
+def engine(game):
+    name = welcome_user()
     print(game.MAIN_QUESTION)
-    # 3. Цикл из задач и ответов
-    for i in range(0, limit):
-        result, string = game.game_arguments()
+    for i in range(0, 3):
+        result, string = game.get_right_answer_and_question()
         print(f'Question: {string}')
         answer = prompt.string('Your answer: ')
-        if answer.lower() == str(result).lower():
+        if str(answer).lower() == str(result):
             print("Correct!")
+            if i == 2:
+                print(f"Congratulations, {name}!")
         else:
-            i = None
+            print(f'''\'{answer}\' is wrong answer ;(. \
+Correct answer was \'{result}\'
+Let\'s try again, {name}!''')
             break
-    # 4. Результат игры
-    result_game(i, answer, result)
 
 
 def welcome_user():
     print("Welcome to the Brain Games!")
-    global name
     name = prompt.string('May I have your name? ')
     print(f'Hello, {name}')
-
-
-def result_game(x, answer, result):
-    if x is None:
-        print(f'''\'{answer}\' is wrong answer ;(. \
-Correct answer was \'{result}\'
-Let\'s try again, {name}!''')
-    else:
-        print(f"Congratulations, {name}!")
+    return name

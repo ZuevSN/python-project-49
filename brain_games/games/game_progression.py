@@ -18,7 +18,7 @@ def progression(element, step, amount):
     return result, string
 
 
-def game_arguments():
+def get_right_answer_and_question():
     element = random.randint(1, 10)
     step = random.randint(1, 10)
     amount = random.randint(5, 10)

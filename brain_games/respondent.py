@@ -12,11 +12,10 @@ def engine(game):
         result, string = game.get_right_answer_and_question()
         print(f'Question: {string}')
         answer = prompt.string('Your answer: ')
-        if str(answer).lower() == str(result):
-            print("Correct!")
-        else:
+        if str(answer).lower() != str(result):
             print(f'''\'{answer}\' is wrong answer ;(. \
 Correct answer was \'{result}\'
 Let\'s try again, {name}!''')
             return
+        print("Correct!")
     print(f"Congratulations, {name}!")
